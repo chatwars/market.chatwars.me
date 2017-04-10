@@ -1,0 +1,41 @@
+{
+  "name": "cwmarket",
+  "version": "1.1.2",
+  "authors": [
+    "shaurgon <shaurgon@gmail.com>"
+  ],
+  "description": "ChatWars Market",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2",
+    "lodash": "*",
+    "angular": "~1.5",
+    "angular-animate": "~1.5",
+    "angular-aria": "~1.5",
+    "angular-i18n": "~1.5",
+    "angular-messages": "~1.5",
+    "angular-sanitize": "~1.5",
+    "angular-resource": "~1.5",
+    "angular-ui-router": "*",
+    "angular-material": "*",
+    "angular-loading-bar": "*",
+    "ngstorage": "*",
+    "restangular": "*",
+    "roboto-fontface": "*",
+    "angular-material-data-table": "*",
+    "lf-ng-md-file-input": "*"
+  },
+  "overrides": {
+    "angular-i18n": {
+      "main": [
+        "angular-locale_ru.js"
+      ]
+    },
+    "roboto-fontface": {
+      "main": []
+    }
+  },
+  "resolutions": {
+    "angular": "~1.5"
+  }
+}

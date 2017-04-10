@@ -1,0 +1,58 @@
+md-sidenav.md-sidenav-left(md-component-id="left" md-whiteframe="4")
+    md-toolbar.md-theme-light
+        h1.md-toolbar-tools Chat Wars Market
+    md-content(layout-padding layout="column")
+        md-input-container
+            label.md-no-float
+            input(type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Поиск по имени игрока")
+        md-chips(flex ng-model="vm.filterByItems" readonly="false" md-removable="true" md-max-chips="5" md-autocomplete-snap md-require-match="true" ng-click="vm.focus($event)")
+            md-chip-template: strong {{$chip}}
+            md-autocomplete(md-selected-item="vm.selectedItem" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)"
+                md-item-text="item" placeholder="Поиск по предмету"): span(md-highlight-text="vm.searchText") {{item}}
+        md-switch.md-primary(ng-model="vm.logic" aria-label="Logic Or/And") {{vm.logicText[vm.logic]}}
+        md-button.md-primary(ng-click="vm.toggleSidenav()") Закрыть
+md-toolbar.md-table-toolbar.md-default(id="toast-container" hide-xs show-gt-xs)
+    .md-toolbar-tools
+        div(layout='row' layout-align='start center' flex=50)
+            md-icon search
+            form(flex)
+                label.md-no-float
+                input(type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Поиск по имени игрока")
+            md-button(ng-click="vm.clearFilter()")
+                md-icon close
+        div(layout='row' layout-align='end center' flex=50)
+            md-chips(flex ng-model="vm.filterByItems" readonly="false" md-removable="true" md-max-chips="5" md-autocomplete-snap md-require-match="true" ng-click="vm.focus($event)")
+                md-chip-template: strong {{$chip}}
+                md-autocomplete(md-selected-item="vm.selectedItem" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)"
+                md-item-text="item" placeholder="Поиск по предмету"): span(md-highlight-text="vm.searchText") {{item}}
+            md-switch.md-primary(ng-model="vm.logic" aria-label="Logic Or/And") {{vm.logicText[vm.logic]}}
+    md-divider
+div(layout="row" style="overflow: auto;")
+    md-content(flex layout-padding="")
+        //- Пагинация
+        md-table-pagination.no-border(md-limit="vm.pagination.limit" md-limit-options="[20, 50, 100]" md-page="vm.pagination.page"
+            md-total="{{filtered.length}}" md-page-select="vm.options.pageSelect" md-label="{{vm.pagination.label}}")
+        //- Основная таблица
+        md-table-container
+            table(md-table ng-model="vm.selected" md-progress="vm.promise")
+                thead(md-head md-order="vm.query.order")
+                    tr(md-row)
+                        th(md-column md-order-by="leftUser.name"): span Юзер 1
+                        th(md-column): span Предметы
+                        th(md-column): span Предметы
+                        th(md-column md-order-by="rightUser.name"): span Юзер 2
+                        th(md-column md-order-by="issuedAt"): span Дата
+                tbody(md-body)
+                    tr(md-row ng-repeat="row in filtered = (vm.data|byName:vm.query.filter|items:vm.filterByItems:vm.logic) |orderBy: vm.query.order|limitTo: vm.pagination.limit: (vm.pagination.page - 1) * vm.pagination.limit"
+                        md-select="row" md-select-id="$index" md-auto-select="vm.options.autoSelect" ng-style="{'background-color':row.color}")
+                        td(md-cell ng-bind-html="row.leftUser.name|emoji")
+                        td.item-list(md-cell): ul: li(ng-repeat="(item, cnt) in row.leftToRight" ng-click="vm.filterItem(item)") {{item}}
+                            span.badge {{cnt}}
+                        td.item-list(md-cell): ul: li(ng-repeat="(item, cnt) in row.rightToLeft" ng-click="vm.filterItem(item)") {{item}}
+                            span.badge {{cnt}}
+                        td(md-cell ng-bind-html="row.rightUser.name|emoji")
+                        td(md-cell) {{row.issuedAt|udate}}
+        //- Пагинация
+        md-table-pagination(md-limit="vm.pagination.limit" md-limit-options="[20, 50, 100]" md-page="vm.pagination.page"
+            md-total="{{filtered.length}}" md-page-select="vm.options.pageSelect" md-label="{{vm.pagination.label}}")
+        div(flex="")

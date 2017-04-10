@@ -1,0 +1,24 @@
+doctype html
+html(ui-i18n="ru")
+    head
+        base(href="/")
+        meta(charset="utf-8")
+        meta(name="fragment" content="!")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        //- meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="title" content="ChatWars Market")
+        meta(name="description" content="ChatWars Market")
+        meta(name="author" content="")
+        link(rel="icon" href="img/favicon.ico")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+
+        title ChatWars Market
+
+        link(href="css/vendor.min.css?v1.2.2" rel="stylesheet")
+        link(href="css/style.min.css?v1.2.2" rel="stylesheet")
+        script(src="app/vendor.min.js?v1.2.2" type="text/javascript")
+        script(src="//twemoji.maxcdn.com/2/twemoji.min.js?2.2.3" type="text/javascript")
+        script(src="app/app.min.js?v1.2.2" type="text/javascript")
+    body(ng-cloak)
+        ui-view

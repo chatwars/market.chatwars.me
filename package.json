@@ -1,0 +1,43 @@
+{
+  "name": "CWMarket",
+  "version": "1.1.2",
+  "private": true,
+  "description": "ChatWars Market",
+  "author": "shaurgon@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "del": "*",
+    "merge-stream": "*",
+    "main-bower-files": "*",
+    "node-notifier": "*",
+    "gulp": "*",
+    "gulp-uglify": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-sass": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-csso": "*",
+    "gulp-notify": "*",
+    "gulp-filter": "*",
+    "gulp-concat-css": "*",
+    "gulp-concat": "*",
+    "gulp-bower": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-jsonminify": "*",
+    "gulp-imagemin": "~2.4",
+    "gulp-wrap": "*",
+    "gulp-angular-templatecache": "*",
+    "gulp-htmlmin": "*",
+    "gulp-html-replace": "*",
+    "gulp-load-plugins": "*",
+    "gulp-bump": "*",
+    "gulp-version-tag": "*",
+    "gulp-sequence": "*",
+    "gulp-util": "*",
+    "gulp-pug": "*",
+    "gulp-rename": "*"
+  },
+  "devDependencies": {
+    "browser-sync-spa": "*",
+    "browser-sync": "*"
+  }
+}

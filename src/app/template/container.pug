@@ -1,0 +1,6 @@
+div(layout="row" layout-fill)
+    //- #loading-bar-container
+    div(flex layout="column" md-swipe-right="vm.showSidenav()")
+        ui-view(name="header")
+        div(ui-view="content" layout="column" style="overflow: auto;" ng-hide="isLoading")
+        ui-view(name="footer")
