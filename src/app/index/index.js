@@ -4,7 +4,6 @@
         .controller('indexCtrl', IndexCtrl);
     function IndexCtrl($scope, $stateParams, $mdToast, StaticService, $mdSidenav){
         var ctrl = this;
-        ctrl.page = $stateParams.id || 1;
 
         ctrl.data = [];
         ctrl.selected = [];
@@ -50,7 +49,7 @@
         };
 
         // реквест данных
-        ctrl.promise = (ctrl.page) ? StaticService.local() : StaticService.full();
+        ctrl.promise = ($stateParams.id == 'local') ? StaticService.local() : StaticService.full();
 
         ctrl.promise.then(function(reply) {
             ctrl.data = reply.data;
