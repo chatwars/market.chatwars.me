@@ -23,7 +23,9 @@
                                 controller: 'headerCtrl',
                                 controllerAs: 'vm'
                             },
-                            'footer@cwm': {}
+                            'footer@cwm': {
+                                templateUrl: 'template/footer.html'
+                            }
                         }
                     })
                     .state('cwm.index', {
