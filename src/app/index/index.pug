@@ -45,7 +45,7 @@ div(layout="row" style="overflow: auto;")
                         th(md-column md-order-by="rightUser.name"): span Юзер 2
                         th(md-column md-order-by="issuedAt"): span Дата
                 tbody(md-body)
-                    tr(md-row ng-repeat="row in filtered = (vm.data|byName:vm.query.filter|items:vm.filterByItems:vm.logic) |orderBy: vm.query.order|limitTo: vm.pagination.limit: (vm.pagination.page - 1) * vm.pagination.limit"
+                    tr(md-row ng-repeat="row in filtered = (vm.data|filter:vm.onlyCraft|byName:vm.query.filter|items:vm.filterByItems:vm.logic) |orderBy: vm.query.order|limitTo: vm.pagination.limit: (vm.pagination.page - 1) * vm.pagination.limit"
                         md-select="row" md-select-id="$index" md-auto-select="vm.options.autoSelect" ng-class="{'expensive':row.expensive}")
                         td.row-link(md-cell)
                             md-button.md-primary.md-icon-button(ng-click="vm.copyLink()" ngclipboard data-clipboard-text="{{vm.link}}{{row.issuedAt}}")

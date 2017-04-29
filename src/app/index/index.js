@@ -43,13 +43,12 @@
             pageSelect: true
         };
 
+        ctrl.expensive = false;
         ctrl.logic = false;
         ctrl.logicText = {
             true: 'Все предметы',
             false: 'Любой предмет'
         };
-
-        ctrl.expensive = false;
 
         ctrl.id = $stateParams.id;
 
@@ -58,7 +57,9 @@
 
         ctrl.promise.then(function(reply) {
             ctrl.data = (!ctrl.id) ?
-                reply.data :
+                ((ctrl.expensive) ? _.filter(reply.data, function(obj) {
+                    return !!obj.expensive;
+                }) : reply.data) :
                 _.filter(reply.data, function(obj) {
                     return (obj.issuedAt === parseInt(ctrl.id));
                 });
@@ -87,6 +88,13 @@
             if (_.indexOf(ctrl.filterByItems, item) == -1) {
                 ctrl.filterByItems.push(item)
             }
+        };
+
+        ctrl.onlyCraft = function(item) {
+            if (!ctrl.expensive || (ctrl.expensive && item.expensive)) {
+                return item;
+            }
+
         };
 
         ctrl.querySearch = function(query) {
