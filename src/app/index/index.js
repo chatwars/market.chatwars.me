@@ -49,10 +49,12 @@
             false: 'Любой предмет'
         };
 
+        ctrl.expensive = false;
+
         ctrl.id = $stateParams.id;
 
         // реквест данных
-        ctrl.promise = StaticService.local();
+        ctrl.promise = StaticService.full();
 
         ctrl.promise.then(function(reply) {
             ctrl.data = (!ctrl.id) ?
@@ -112,8 +114,9 @@
             $mdToast.show(
                 $mdToast.simple()
                     .textContent('Ссылка скопирована в буфер обмена')
-                    .position('top right')
-                    .hideDelay(2000)
+                    .position("top right")
+                    .hideDelay(3000)
+                    .parent("#toast-container")
             );
         }
     }
