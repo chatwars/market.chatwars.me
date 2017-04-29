@@ -2,9 +2,10 @@
     "use strict";
     angular.module('cwm')
         .controller('indexCtrl', IndexCtrl);
-    function IndexCtrl($scope, $stateParams, $mdToast, StaticService, $mdSidenav){
+    function IndexCtrl($scope, $state, $stateParams, $mdToast, StaticService, $mdSidenav){
         var ctrl = this;
 
+        ctrl.link = location.origin + $state.href('cwm.logs');
         ctrl.data = [];
         ctrl.selected = [];
         ctrl.filterByItems = [];
@@ -51,7 +52,7 @@
         ctrl.id = $stateParams.id;
 
         // реквест данных
-        ctrl.promise = StaticService.full();
+        ctrl.promise = StaticService.local();
 
         ctrl.promise.then(function(reply) {
             ctrl.data = (!ctrl.id) ?
@@ -101,11 +102,20 @@
             if (!angular.element(ev.target).hasClass('md-focused')) {
                 angular.element(ev.target).find('input').focus();
             }
-        }
+        };
 
         ctrl.toggleSidenav = function () {
             $mdSidenav('left').toggle();
         };
+
+        ctrl.copyLink = function () {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Ссылка скопирована в буфер обмена')
+                    .position('top right')
+                    .hideDelay(2000)
+            );
+        }
     }
 
 })(angular);

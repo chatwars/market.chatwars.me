@@ -28,8 +28,18 @@
                             }
                         }
                     })
-                    .state('cwm.index', {
-                        url: "/:id",
+                    .state('cwm.logs', {
+                        url: "/logs/:id",
+                        views: {
+                            'content@cwm': {
+                                templateUrl: 'index/index.html',
+                                controller: 'indexCtrl',
+                                controllerAs: 'vm'
+                            }
+                        }
+                    })
+                    .state('cwm.profile', {
+                        url: "/profile",
                         views: {
                             'content@cwm': {
                                 templateUrl: 'index/index.html',
@@ -39,7 +49,7 @@
                         }
                     });
 
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/logs/');
             });
 
         angular.bootstrap(document, ['cwm']);
@@ -49,11 +59,18 @@
     angular
         .module('cwm', [
             'ui.router', 'restangular', 'ngStorage', 'ngSanitize', 'ngMaterial',
-            'ngResource', 'ngMessages', 'md.data.table', 'cfp.loadingBar',
+            'ngResource', 'ngMessages', 'ngclipboard', 'md.data.table', 'cfp.loadingBar',
             'cwm.templates'
         ])
         .run(function ($rootScope, $state, $stateParams) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+            $rootScope.flags = {
+                "🇨🇾": "1f1e8-1f1fe", // White
+                "🇻🇦": "1f1fb-1f1e6", // Yellow
+                "🇮🇲": "1f1ee-1f1f2", // Red
+                "🇪🇺": "1f1ea-1f1fa", // Blue
+                "🇬🇵": "1f1ec-1f1f5", // Black
+            }
         })
 })();

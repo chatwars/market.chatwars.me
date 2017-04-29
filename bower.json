@@ -23,7 +23,8 @@
     "restangular": "*",
     "roboto-fontface": "*",
     "angular-material-data-table": "*",
-    "lf-ng-md-file-input": "*"
+    "lf-ng-md-file-input": "*",
+    "ngclipboard": "*"
   },
   "overrides": {
     "angular-i18n": {

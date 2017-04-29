@@ -37,6 +37,7 @@ div(layout="row" style="overflow: auto;")
             table(md-table ng-model="vm.selected" md-progress="vm.promise")
                 thead(md-head md-order="vm.query.order")
                     tr(md-row)
+                        th(md-column)
                         th(md-column md-order-by="leftUser.name"): span Юзер 1
                         th(md-column): span Предметы
                         th(md-column): span Предметы
@@ -45,12 +46,16 @@ div(layout="row" style="overflow: auto;")
                 tbody(md-body)
                     tr(md-row ng-repeat="row in filtered = (vm.data|byName:vm.query.filter|items:vm.filterByItems:vm.logic) |orderBy: vm.query.order|limitTo: vm.pagination.limit: (vm.pagination.page - 1) * vm.pagination.limit"
                         md-select="row" md-select-id="$index" md-auto-select="vm.options.autoSelect" ng-class="{'expensive':row.expensive}")
-                        td(md-cell ng-bind-html="row.leftUser.name|emoji")
+                        td.row-link(md-cell)
+                            md-button.md-primary.md-icon-button(ng-click="vm.copyLink()" ngclipboard data-clipboard-text="{{vm.link}}{{row.issuedAt}}")
+                                md-icon link
+                                md-tooltip(md-direction="bottom") Скопировать ссылку запись
+                        td(md-cell profile-link="row.leftUser")
                         td.item-list(md-cell): ul: li(ng-repeat="(item, cnt) in row.leftToRight" ng-click="vm.filterItem(item)") {{item}}
                             span.badge {{cnt}}
                         td.item-list(md-cell): ul: li(ng-repeat="(item, cnt) in row.rightToLeft" ng-click="vm.filterItem(item)") {{item}}
                             span.badge {{cnt}}
-                        td(md-cell ng-bind-html="row.rightUser.name|emoji")
+                        td(md-cell profile-link="row.rightUser")
                         td(md-cell) {{row.issuedAt|udate}}
         //- Пагинация
         md-table-pagination(md-limit="vm.pagination.limit" md-limit-options="[20, 50, 100]" md-page="vm.pagination.page"
