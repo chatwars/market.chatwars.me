@@ -48,12 +48,19 @@
             false: 'Любой предмет'
         };
 
+        ctrl.id = $stateParams.id;
+
         // реквест данных
-        ctrl.promise = ($stateParams.id == 'local') ? StaticService.local() : StaticService.full();
+        ctrl.promise = StaticService.full();
 
         ctrl.promise.then(function(reply) {
-            ctrl.data = reply.data;
+            ctrl.data = (!ctrl.id) ?
+                reply.data :
+                _.filter(reply.data, function(obj) {
+                    return (obj.issuedAt === parseInt(ctrl.id));
+                });
             ctrl.pagination.count = reply.data.length;
+
             _.forEach(reply.data, function(obj, idx) {
                 var items = _.merge({}, obj.leftToRight, obj.rightToLeft);
                 _.forEach(items, function(cnt, item) {

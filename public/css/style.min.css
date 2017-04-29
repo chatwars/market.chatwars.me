@@ -53,6 +53,15 @@ md-toolbar.md-table-toolbar form {
   margin-left: 16px;
 }
 
+tr.expensive {
+  background-color: rgba(7, 158, 7, 0.37);
+}
+
+tr.expensive > td > ul > li:hover,
+tr.expensive .badge {
+  background-color: rgba(7, 158, 7, 0.37);
+}
+
 td.item-list ul {
   -webkit-padding-start: 0;
   -moz-padding-start: 0;
