@@ -39,11 +39,11 @@
                         }
                     })
                     .state('cwm.profile', {
-                        url: "/profile",
+                        url: "/profile/:username",
                         views: {
                             'content@cwm': {
-                                templateUrl: 'index/index.html',
-                                controller: 'indexCtrl',
+                                templateUrl: 'profile/profile.html',
+                                controller: 'profileCtrl',
                                 controllerAs: 'vm'
                             }
                         }

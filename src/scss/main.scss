@@ -11,12 +11,17 @@ td {
   }
 }
 
-md-toolbar.md-table-toolbar form input {
-  width: 100%;
-  margin: 0;
-  border: none;
-  color: rgba(0, 0, 0, 0.87);
-  &:focus {outline: none;}
+md-toolbar.md-table-toolbar form {
+  margin-left: 16px;
+  input {
+    width: 100%;
+    margin: 0;
+    border: none;
+    color: rgba(0, 0, 0, 0.87);
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 md-list-item {
@@ -31,21 +36,10 @@ md-list-item {
   }
 }
 
-md-toolbar.md-table-toolbar form > input {
-  width: 100%;
-  margin: 0;
-  border: none;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-md-toolbar.md-table-toolbar form {
-  margin-left: 16px;
-}
-
 tr.expensive {
-  background-color: rgba(7, 158, 7, 0.37);
+  background-color: rgba(7, 158, 7, 0.1);
   > td > ul > li:hover, .badge {
-    background-color: rgba(7, 158, 7, 0.37);
+    background-color: rgba(7, 158, 7, 0.1);
   }
 }
 

@@ -53,12 +53,12 @@
         ctrl.id = $stateParams.id;
 
         // реквест данных
-        ctrl.promise = StaticService.full();
+        ctrl.promise = StaticService.local();
 
         ctrl.promise.then(function(reply) {
             ctrl.data = (!ctrl.id) ?
                 ((ctrl.expensive) ? _.filter(reply.data, function(obj) {
-                    return !!obj.expensive;
+                    return obj.expensive;
                 }) : reply.data) :
                 _.filter(reply.data, function(obj) {
                     return (obj.issuedAt === parseInt(ctrl.id));
