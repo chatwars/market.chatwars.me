@@ -19,7 +19,7 @@
             scope: {
                 profile: "=profileLink"
             },
-            template: "<md-icon class='emoji' md-svg-src='{{ vm.path }}'></md-icon> <a ui-sref='cwm.profile({user: vm.userId})'>{{vm.userName}}</a>",
+            template: "<md-icon class='emoji' md-svg-src='{{ vm.path }}'></md-icon> <a ui-sref='cwm.profile({hash: vm.userId})'>{{vm.userName}}</a>",
             controller: 'profileLinkController',
             controllerAs: 'vm',
             bindToController: true,

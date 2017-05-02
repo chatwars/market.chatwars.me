@@ -39,7 +39,7 @@
                         }
                     })
                     .state('cwm.profile', {
-                        url: "/profile/:username",
+                        url: "/profile/:hash",
                         views: {
                             'content@cwm': {
                                 templateUrl: 'profile/profile.html',
