@@ -7,10 +7,10 @@
     function profileLinkController($rootScope) {
         var ctrl = this;
         var type = '.svg';
-        var name = ctrl.profile.name.match(/([🇨🇾|🇻🇦|🇮🇲|🇪🇺|🇬🇵|🇲🇴|🇰🇮]{4}) (.*)/);
-
-        ctrl.flag = "/img/" + _.get($rootScope.flags, name[1]) + type;
-        ctrl.userName = _.trim(name[2]);
+        var flag = _.chain(ctrl.profile).get('castle').lowerCase().value();
+        ctrl.path = "/img/" + _.get($rootScope.flags, flag) + type;
+        ctrl.userName = ctrl.profile.name;
+        ctrl.userId = _.get(ctrl.profile, 'id', '');
     }
 
     function profileLinkDirective(){
@@ -19,7 +19,7 @@
             scope: {
                 profile: "=profileLink"
             },
-            template: "<md-icon class='emoji' md-svg-src='{{ vm.flag }}'></md-icon> <a ui-sref='cwm.profile({user: vm.userName})'>{{vm.userName}}</a>",
+            template: "<md-icon class='emoji' md-svg-src='{{ vm.path }}'></md-icon> <a ui-sref='cwm.profile({user: vm.userId})'>{{vm.userName}}</a>",
             controller: 'profileLinkController',
             controllerAs: 'vm',
             bindToController: true,

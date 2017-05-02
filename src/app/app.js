@@ -66,13 +66,13 @@
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
             $rootScope.flags = {
-                "🇨🇾": "1f1e8-1f1fe", // White
-                "🇻🇦": "1f1fb-1f1e6", // Yellow
-                "🇮🇲": "1f1ee-1f1f2", // Red
-                "🇪🇺": "1f1ea-1f1fa", // Blue
-                "🇬🇵": "1f1ec-1f1f5", // Black
-                "🇲🇴": "1f1f2-1f1f4", // Mint
-                "🇰🇮": "1f1f0-1f1ee" // Twilight
+                "white": "1f1e8-1f1fe", // White
+                "yellow": "1f1fb-1f1e6", // Yellow
+                "red": "1f1ee-1f1f2", // Red
+                "blue": "1f1ea-1f1fa", // Blue
+                "black": "1f1ec-1f1f5", // Black
+                "mint": "1f1f2-1f1f4", // Mint
+                "twilight": "1f1f0-1f1ee" // Twilight
             }
         })
 })();
