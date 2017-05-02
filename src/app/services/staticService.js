@@ -3,15 +3,19 @@
     angular.module('cwm')
         .service('StaticService', StaticService);
 
-    function StaticService($http){
+    function StaticService($http, $location){
         var service = {};
 
-        service.local = function(id) {
-            return $http.get('json/logs.json');
+        service.trades = function(id) {
+            return $http.get('json/trades.json');
         };
 
-        service.full = function() {
-            return $http.get('/export/lastWeek.json');
+        service.logs = function() {
+            var path = ($location.host() == 'localhost') ?
+                'json/logs.json' :
+                '/export/lastWeek.json';
+
+            return $http.get(path);
         };
 
         return service;

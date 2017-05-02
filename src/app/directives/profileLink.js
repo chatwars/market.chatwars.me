@@ -7,7 +7,7 @@
     function profileLinkController($rootScope) {
         var ctrl = this;
         var type = '.svg';
-        var name = ctrl.profile.name.match(/([🇨🇾|🇻🇦|🇮🇲|🇪🇺|🇬🇵]{4}) (.*)/);
+        var name = ctrl.profile.name.match(/([🇨🇾|🇻🇦|🇮🇲|🇪🇺|🇬🇵|🇲🇴|🇰🇮]{4}) (.*)/);
 
         ctrl.flag = "/img/" + _.get($rootScope.flags, name[1]) + type;
         ctrl.userName = _.trim(name[2]);

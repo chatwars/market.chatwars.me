@@ -1,9 +1,18 @@
 md-toolbar.md-hue-2.navbar-fixed
-    .md-toolbar-tools(show-xs hide-gt-xs layout-xs="row")
+    .md-toolbar-tools(show-xs show-sm hide-gt-sm layout="row")
         md-button.md-icon-button(aria-label="Settings" ng-click="vm.toggleSidenav()"): md-icon menu
-        div(layout-xs="column" layout-align-xs="end center")
-            h6 Chat Wars Market <br> Список операций на рынке
-    .md-toolbar-tools(hide-xs show-gt-xs)
+        h5 Chat Wars Market <br> <small>Список операций на рынке</small>
+        md-menu
+            md-button.md-icon-button(ng-click="vm.openMenu($mdMenu, $event)")
+                md-icon more_vert
+            md-menu-content
+                md-menu-item: md-button(ui-sref="cwm.logs") Операции
+                md-menu-item: md-button(ui-sref="cwm.trades") Графики
+    .md-toolbar-tools(hide-xs hide-sm show-gt-sm layout="row" layout-align="space-between center")
         a.brand-logo: span Chat Wars Market
         md-button.md-icon-button(aria-label="Settings" ng-click="vm.toggleSidenav()"): md-icon menu
         h2 Список операций на рынке
+        div(flex)
+        div(hide-xs show-gt-xs layout-xs="row")
+            md-button(ui-sref="cwm.logs") Операции
+            md-button(ui-sref="cwm.trades") Графики

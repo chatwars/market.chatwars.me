@@ -4,6 +4,10 @@
   margin: 0 4px;
 }
 
+a.brand-logo + *:not(.md-button) {
+  margin-left: 50px;
+}
+
 td {
   vertical-align: top !important;
   &:not(.item-list) {

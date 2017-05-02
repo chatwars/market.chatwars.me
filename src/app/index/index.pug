@@ -10,6 +10,7 @@ md-sidenav.md-sidenav-left(md-component-id="left" md-whiteframe="4")
             md-autocomplete(md-selected-item="vm.selectedItem" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)"
                 md-item-text="item" placeholder="Поиск по предмету"): span(md-highlight-text="vm.searchText") {{item}}
         md-switch.md-primary(ng-model="vm.logic" aria-label="Logic Or/And") {{vm.logicText[vm.logic]}}
+        md-checkbox.md-primary(ng-model="vm.expensive" aria-label="craft") Только крафт
         md-button.md-primary(ng-click="vm.toggleSidenav()") Закрыть
 md-toolbar.md-table-toolbar.md-default(id="toast-container" hide-xs show-gt-xs)
     .md-toolbar-tools(layout='row' layout-align='space-between center')

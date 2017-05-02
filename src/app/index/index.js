@@ -53,7 +53,7 @@
         ctrl.id = $stateParams.id;
 
         // реквест данных
-        ctrl.promise = StaticService.full();
+        ctrl.promise = StaticService.logs();
 
         ctrl.promise.then(function(reply) {
             ctrl.data = (!ctrl.id) ?

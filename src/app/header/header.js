@@ -11,6 +11,10 @@
             $mdSidenav('left').toggle();
         };
 
+         ctrl.openMenu = function ($mdMenu, ev) {
+             $mdMenu.open(ev);
+         }
+
     }
 
     function ContainerCtrl($scope, $mdSidenav){
